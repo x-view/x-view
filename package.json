@@ -1,0 +1,30 @@
+{
+  "name": "x-view",
+  "version": "0.0.0",
+  "description": "A JavaScript library like React, but uses Web Components.",
+  "keywords": [],
+  "homepage": "https://github.com/lixiaoyan/x-view",
+  "bugs": {
+    "url": "https://github.com/lixiaoyan/x-view/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "XiaoYan Li",
+    "email": "lxy.lixiaoyan@gmail.com",
+    "url": "https://github.com/lixiaoyan"
+  },
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lixiaoyan/x-view.git"
+  },
+  "scripts": {
+    "prepublish": "./node_modules/.bin/webpack"
+  },
+  "dependencies": {
+    "virtual-dom": "^2.0.1"
+  },
+  "devDependencies": {
+    "webpack": "^1.9.11"
+  }
+}
