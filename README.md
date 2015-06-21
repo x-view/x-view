@@ -8,11 +8,11 @@ A JavaScript library like [React](http://facebook.github.io/react/index.html), b
 
 ## Requirements
 
-Polyfill for:
+Polyfills for:
 
-- Object.assign
-- WeakMap
-- document.registerElement
+- `Object.assign`
+- `WeakMap`
+- `document.registerElement`
 
 ## Installation
 
