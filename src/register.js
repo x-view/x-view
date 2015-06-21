@@ -12,6 +12,13 @@ function update(dom, component) {
   event.emit(component, "updated");
 }
 
+function emitEvent(dom, component, type, detail) {
+  var event = new CustomEvent(type, {
+    detail: detail
+  });
+  dom.dispatchEvent(event);
+}
+
 function register(name, componentClass) {
   var propTypes = componentClass.prototype.propTypes;
   var propNames = Object.keys(propTypes);
@@ -23,6 +30,7 @@ function register(name, componentClass) {
           component: component
         });
         event.on(component, "upstream:update", update.bind(null, this, component));
+        event.on(component, "upstream:emit-event", emitEvent.bind(null, this, component));
         event.emit(component, "create");
       },
       attachedCallback: function() {

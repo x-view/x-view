@@ -79,6 +79,10 @@ Component.prototype.replaceState = function(state) {
   this._update(this.props, state);
 };
 
+Component.prototype.emit = function(type, detail) {
+  event.emit(this, "upstream:emit-event", type, detail);
+};
+
 Component.prototype.defaultProps = function() {
   return {};
 };

@@ -12,6 +12,5 @@ module.exports = {
   render: render,
   Component: Component,
   createClass: Component.createClass,
-  createElement: vdom.createElement,
-  createComponent: vdom.createComponent
+  createElement: vdom.createElement
 };
