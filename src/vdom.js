@@ -5,20 +5,30 @@ var store = {};
 
 function buildProps(props) {
   var attributes = {};
+  var properties = {};
   var events = {};
   for(var key in props) {
     if(props.hasOwnProperty(key)) {
       var value = props[key];
-      if(/on-/.test(key) && typeof value === "function") {
+      if(/on-/.test(key) && typeof value == "function") {
         events[key] = new EventHook(value);
+      } else if(key == "style") {
+        properties[key] = value;
       } else {
+        if(typeof value == "boolean") {
+          value = value ? "" : undefined;
+        } else if(typeof value == "number") {
+          value = String(value);
+        } else if(value === null) {
+          value = undefined;
+        }
         attributes[key] = value;
       }
     }
   }
   return Object.assign({
     attributes: attributes
-  }, events);
+  }, properties, events);
 }
 
 function createClass(name) {
