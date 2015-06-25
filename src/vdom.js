@@ -57,6 +57,12 @@ function createComponent(name, props, children) {
 }
 
 function createElement(name, props, children) {
+  if(!children && Array.isArray(props)) {
+    children = props;
+    props = undefined;
+  }
+  props = props || {};
+  children = children || [];
   props = buildProps(props);
   if(/-/.test(name)) {
     return createComponent(name, props, children);
