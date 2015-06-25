@@ -26,12 +26,7 @@ function register(name, componentClass) {
     prototype: Object.assign(Object.create(HTMLElement.prototype), {
       createdCallback: function() {
         var component = new componentClass({});
-        var root;
-        if(config["shadow-dom"]) {
-          root = this.createShadowRoot();
-        } else {
-          root = this;
-        }
+        var root = this.createShadowRoot();
         event.on(component, "upstream:update", update.bind(null, root, component));
         event.on(component, "upstream:emit-event", emitEvent.bind(null, this, component));
         event.emit(component, "create");
