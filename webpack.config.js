@@ -1,6 +1,6 @@
 var webpack = require("webpack");
 
-module.exports = {
+var config = {
   context: __dirname,
   entry: "./index.js",
   output: {
@@ -13,11 +13,8 @@ module.exports = {
       "process.env.NODE_ENV": JSON.stringify("production")
     }),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    })
+    new webpack.optimize.OccurenceOrderPlugin()
   ]
 };
+
+module.exports = config;
