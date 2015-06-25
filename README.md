@@ -12,7 +12,8 @@ Polyfills for:
 
 - `Object.assign`
 - `WeakMap`
-- `document.registerElement`
+- `Custom Elements`
+- `Shadow DOM`
 
 ## Installation
 
