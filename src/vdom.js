@@ -32,9 +32,9 @@ function buildProps(props) {
 }
 
 function createClass(name) {
-  var widgetClass = function(props) {
+  var widgetClass = function(props, children) {
     this.props = props;
-    this.vtree = vdom.h(name, props);
+    this.vtree = vdom.h(name, props, children);
   };
   widgetClass.prototype.type = "Widget";
   widgetClass.prototype.init = function() {
@@ -53,7 +53,7 @@ function createComponent(name, props, children) {
   if(!widgetClass) {
     store[name] = widgetClass = createClass(name);
   }
-  return new widgetClass(props);
+  return new widgetClass(props, children);
 }
 
 function createElement(name, props, children) {
