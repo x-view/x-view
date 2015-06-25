@@ -26,24 +26,31 @@ function register(name, componentClass) {
     prototype: Object.assign(Object.create(HTMLElement.prototype), {
       createdCallback: function() {
         var component = new componentClass({});
-        store.set(this, {
-          component: component
-        });
-        event.on(component, "upstream:update", update.bind(null, this, component));
+        var root;
+        if(config["shadow-dom"]) {
+          root = this.createShadowRoot();
+        } else {
+          root = this;
+        }
+        event.on(component, "upstream:update", update.bind(null, root, component));
         event.on(component, "upstream:emit-event", emitEvent.bind(null, this, component));
         event.emit(component, "create");
+        store.set(this, {
+          component: component,
+          root: root
+        });
       },
       attachedCallback: function() {
-        var component = store.get(this).component;
-        event.emit(component, "mount");
-        update(this, component);
+        var state = store.get(this);
+        event.emit(state.component, "mount");
+        update(state.root, state.component);
       },
       detachedCallback: function() {
-        var component = store.get(this).component;
-        event.emit(component, "unmount");
+        var state = store.get(this);
+        event.emit(state.component, "unmount");
       },
       attributeChangedCallback: function() {
-        var component = store.get(this).component;
+        var state = store.get(this);
         var props = {};
         for(var i = 0; i < propNames.length; i++) {
           var name = propNames[i];
@@ -58,7 +65,7 @@ function register(name, componentClass) {
             }
           }
         }
-        component.replaceProps(props);
+        state.component.replaceProps(props);
       }
     })
   });
