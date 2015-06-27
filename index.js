@@ -1,3 +1,4 @@
+var event = require("./src/event");
 var type = require("./src/type");
 var config = require("./src/config");
 var register = require("./src/register");
@@ -6,6 +7,7 @@ var Component = require("./src/component");
 var vdom = require("./src/vdom");
 
 module.exports = {
+  event: event,
   type: type,
   config: config,
   register: register,
