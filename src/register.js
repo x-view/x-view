@@ -5,10 +5,10 @@ var render = require("./render");
 
 var store = new WeakMap();
 
-function update(dom, component) {
+function update(dom, component, root) {
   event.emit(component, "update");
   var vtree = component.render();
-  render(dom, vtree);
+  render(root, vtree);
   event.emit(component, "updated");
 }
 
@@ -27,7 +27,7 @@ function register(name, componentClass) {
       createdCallback: function() {
         var component = new componentClass({});
         var root = this.createShadowRoot();
-        event.on(component, "upstream:update", update.bind(null, root, component));
+        event.on(component, "upstream:update", update.bind(null, this, component, root));
         event.on(component, "upstream:emit-event", emitEvent.bind(null, this, component));
         event.emit(component, "create");
         store.set(this, {
@@ -38,7 +38,6 @@ function register(name, componentClass) {
       attachedCallback: function() {
         var state = store.get(this);
         event.emit(state.component, "mount", state.root);
-        update(state.root, state.component);
       },
       detachedCallback: function() {
         var state = store.get(this);

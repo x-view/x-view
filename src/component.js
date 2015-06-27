@@ -6,6 +6,7 @@ function Component(props) {
   this._mounted = false;
   event.on(this, "mount", function() {
     this._mounted = true;
+    event.emit(this, "upstream:update");
   });
   event.on(this, "unmount", function() {
     this._mounted = false;
