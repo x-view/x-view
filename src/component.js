@@ -4,12 +4,14 @@ function Component(props) {
   this.props = this._buildProps(props);
   this.state = this.initialState();
   this._mounted = false;
-  event.on(this, "mount", function() {
+  event.on(this, "mount", function(root) {
     this._mounted = true;
+    this.root = root;
     event.emit(this, "upstream:update");
   });
   event.on(this, "unmount", function() {
     this._mounted = false;
+    this.root = null;
   });
   this.init();
 }
