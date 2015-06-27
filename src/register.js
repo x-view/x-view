@@ -37,7 +37,7 @@ function register(name, componentClass) {
       },
       attachedCallback: function() {
         var state = store.get(this);
-        event.emit(state.component, "mount");
+        event.emit(state.component, "mount", state.root);
         update(state.root, state.component);
       },
       detachedCallback: function() {
