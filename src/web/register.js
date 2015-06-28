@@ -6,6 +6,7 @@ var render = require("../render");
 require("./event");
 
 var store = new WeakMap();
+var cachedProps = new WeakMap();
 
 function update(dom, component, root) {
   event.emit(component, "update");
@@ -23,7 +24,6 @@ function emitEvent(dom, component, type, detail) {
 
 function register(name, componentClass) {
   var propTypes = componentClass.prototype.propTypes;
-  var propNames = Object.keys(propTypes);
   document.registerElement(name, {
     prototype: Object.assign(Object.create(HTMLElement.prototype), {
       createdCallback: function() {
@@ -45,22 +45,20 @@ function register(name, componentClass) {
         var state = store.get(this);
         event.emit(state.component, "unmount");
       },
-      attributeChangedCallback: function() {
+      attributeChangedCallback: function(name, previous, value) {
         var state = store.get(this);
-        var props = {};
-        for(var i = 0; i < propNames.length; i++) {
-          var name = propNames[i];
-          if(this.hasAttribute(name)) {
-            var value = this.getAttribute(name);
-            if(propTypes[name] === type.boolean) {
-              value = (value !== null);
-            }
-            value = type.cast(value, propTypes[name]);
-            if(value !== null) {
-              props[name] = value;
-            }
+        var oldProps = cachedProps.get(this) || {};
+        var props = Object.assign({}, oldProps);
+        if(value === null) {
+          delete props[name];
+        } else {
+          if(propTypes[name] === type.boolean) {
+            props[name] = true;
+          } else {
+            props[name] = type.cast(value, propTypes[name]);
           }
         }
+        cachedProps.set(this, props);
         state.component.replaceProps(props);
       }
     })
