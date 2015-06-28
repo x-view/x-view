@@ -1,5 +1,5 @@
-var dispatcher = require("./dispatcher");
-var eventStore = require("./event-store");
+var dispatcher = require("../dispatcher");
+var eventStore = require("../event-store");
 
 function eventHandler(e) {
   var handler = eventStore.get(this)[e.type];

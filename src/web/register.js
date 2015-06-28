@@ -1,9 +1,9 @@
-var type = require("./type");
-var event = require("./event");
-var config = require("./config");
-var render = require("./render");
+var type = require("../type");
+var event = require("../event");
+var config = require("../config");
+var render = require("../render");
 
-require("./dom-event");
+require("./event");
 
 var store = new WeakMap();
 
