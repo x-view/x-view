@@ -10,7 +10,7 @@ function buildProps(props) {
   for(var key in props) {
     if(props.hasOwnProperty(key)) {
       var value = props[key];
-      if(/on-/.test(key) && typeof value == "function") {
+      if(/^on-/.test(key) && typeof value == "function") {
         events[key] = new EventHook(value);
       } else if(key == "style") {
         properties[key] = value;
