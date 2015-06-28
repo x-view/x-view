@@ -1,3 +1,4 @@
+var event = require("../event");
 var dispatcher = require("../dispatcher");
 var eventStore = require("../event-store");
 
