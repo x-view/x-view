@@ -3,14 +3,14 @@ var event = require("./event");
 function Component(props) {
   this.props = this._buildProps(props);
   this.state = this.initialState();
-  this._mounted = false;
+  this.mounted = false;
   event.on(this, "mount", function(root) {
-    this._mounted = true;
+    this.mounted = true;
     this.root = root;
     event.emit(this, "upstream:update");
   });
   event.on(this, "unmount", function() {
-    this._mounted = false;
+    this.mounted = false;
     this.root = null;
   });
   this.init();
@@ -39,10 +39,6 @@ Component.prototype.needUpdate = function(nextProps, nextState) {
   return true;
 };
 
-Component.prototype.isMounted = function() {
-  return this._mounted;
-};
-
 Component.prototype._buildProps = function(props) {
   return Object.assign(this.defaultProps(), props);
 };
@@ -54,14 +50,14 @@ Component.prototype._update = function(props, state) {
   if(this.needUpdate(props, state)) {
     this.props = props;
     this.state = state;
-    if(this.isMounted()) {
+    if(this.mounted) {
       event.emit(this, "upstream:update");
     }
   }
 };
 
 Component.prototype.forceUpdate = function() {
-  if(this.isMounted()) {
+  if(this.mounted) {
     event.emit(this, "upstream:update");
   }
 };
