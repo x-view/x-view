@@ -6,7 +6,7 @@ A JavaScript library like [React](http://facebook.github.io/react/index.html), b
 
 ## Requirements
 
-Polyfills for:
+Supports / Polyfills for:
 
 - `Object.assign`
 - `WeakMap`
@@ -18,6 +18,11 @@ Polyfills for:
 ``` shell
 $ npm install --save x-view
 ```
+
+## Documentations
+
+- [Getting Started](./docs/getting-started.md)
+- [More Documentations...](./docs/)
 
 ## Example
 
@@ -38,6 +43,8 @@ var Button = x.createClass({
 
 x.register("x-button", Button);
 ```
+
+[More examples...](./tags/)
 
 ## Builtin Tags
 
