@@ -1,6 +1,5 @@
 var type = require("../type");
 var event = require("../event");
-var config = require("../config");
 var render = require("../render");
 
 require("./event");
