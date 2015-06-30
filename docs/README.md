@@ -1,5 +1,6 @@
 # Documentations
 
+- [Getting Started](./getting-started.md)
 - [Top-Level API](./top-level-api.md)
 - [Event API](./event-api.js)
 - [Component API](./component-api.md)

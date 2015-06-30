@@ -46,7 +46,7 @@ x.register("x-button", Button);
 
 [More examples...](./tags/)
 
-## Builtin Tags
+## Built-in Tags
 
 - `<x-raw html="..."></x-raw>`
 
