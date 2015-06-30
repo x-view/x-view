@@ -2,7 +2,7 @@ var webpack = require("webpack");
 
 var config = {
   context: __dirname,
-  entry: ["./index.js", "./tags.js"],
+  entry: "./lib",
   output: {
     path: __dirname + "/dist",
     filename: "x-view.js",
