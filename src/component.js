@@ -1,7 +1,7 @@
 var event = require("./event");
 
-function Component(props) {
-  this.props = this._buildProps(props);
+function Component() {
+  this.props = this._buildProps({});
   this.state = this.initialState();
   this.mounted = false;
   event.on(this, "mount", function(root) {
