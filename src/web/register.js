@@ -46,6 +46,9 @@ function register(name, componentClass) {
         event.emit(state.component, "unmount");
       },
       attributeChangedCallback: function(name, previous, value) {
+        if(!propTypes[name]) {
+          return;
+        }
         var state = store.get(this);
         var oldProps = cachedProps.get(this) || {};
         var props = Object.assign({}, oldProps);
