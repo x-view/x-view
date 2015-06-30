@@ -39,6 +39,10 @@ var Button = x.createClass({
 x.register("x-button", Button);
 ```
 
+## Builtin Tags
+
+- `<x-raw html="..."></x-raw>`
+
 ## License
 
 MIT License
