@@ -3,6 +3,7 @@ var vdom = require("virtual-dom");
 var store = new WeakMap();
 
 function render(dom, vtree) {
+  vtree = vtree || vdom.h("noscript");
   var previous = store.get(dom);
   if(!previous) {
     var root = vdom.create(vtree);
