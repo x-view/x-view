@@ -50,7 +50,7 @@ replaceState(state: Object) -> void
 forceUpdate() -> void
 ```
 
-Force re-rendering the component even `this.needUpdate()` returns false.
+Force re-render the component even `this.needUpdate()` returns false.
 
 ### emit
 
