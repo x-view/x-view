@@ -20,7 +20,7 @@ state: Object
 mounted: Boolean
 ```
 
-This property indication whether the component is mounted to HTML Node or not.
+This property indicate whether the component is mounted to HTML Node or not.
 
 ### root
 
