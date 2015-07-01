@@ -54,6 +54,8 @@ Create Virtual DOM.
 x.jsx(name: String, props: Object?, ...children: {VNode|String|Number}) -> VNode
 ```
 
+A wrapper of `x.createElement` for using with JSX.
+
 ## x.render
 
 ``` javascript
