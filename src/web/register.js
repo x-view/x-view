@@ -21,12 +21,29 @@ function emitEvent(dom, component, type, detail) {
   dom.dispatchEvent(event);
 }
 
+function castType(value, propType) {
+  if(propType === type.boolean) {
+    return value !== null;
+  } else {
+    return type.cast(value, propType);
+  }
+}
+
 function register(name, componentClass) {
   var propTypes = componentClass.prototype.propTypes;
+  var propNames = Object.keys(propTypes);
   document.registerElement(name, {
     prototype: Object.assign(Object.create(HTMLElement.prototype), {
       createdCallback: function() {
-        var component = new componentClass({});
+        var props = {};
+        for(var i = 0; i < propNames.length; i++) {
+          var name = propNames[i];
+          var value = this.getAttribute(name);
+          if(name !== null) {
+            props[name] = castType(value, propTypes[name]);
+          }
+        }
+        var component = new componentClass(props);
         var root = this.createShadowRoot();
         event.on(component, "upstream:update", update.bind(null, this, component, root));
         event.on(component, "upstream:emit-event", emitEvent.bind(null, this, component));
@@ -54,11 +71,7 @@ function register(name, componentClass) {
         if(value === null) {
           delete props[name];
         } else {
-          if(propTypes[name] === type.boolean) {
-            props[name] = true;
-          } else {
-            props[name] = type.cast(value, propTypes[name]);
-          }
+          props[name] = castType(value, propTypes[name]);
         }
         cachedProps.set(this, props);
         state.component.replaceProps(props);
