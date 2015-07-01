@@ -46,6 +46,30 @@ x.register("x-button", Button);
 
 [More examples...](./tags/)
 
+## JSX
+
+``` javascript
+/** @jsx x.jsx */
+
+var vtree = (<div class="box">
+  <x-button />
+</div>);
+```
+
+Output:
+
+``` javascript
+/** @jsx x.jsx */
+
+"use strict";
+
+var vtree = x.jsx(
+  "div",
+  { "class": "box" },
+  x.jsx("x-button", null)
+);
+```
+
 ## Built-in Tags
 
 - `<x-raw html="..."></x-raw>`

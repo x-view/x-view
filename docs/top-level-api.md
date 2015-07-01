@@ -43,10 +43,16 @@ Register custom element.
 ## x.createElement
 
 ``` javascript
-x.createElement(name: String, props?: Object, children?: Array<{VNode|String}>) -> VNode
+x.createElement(name: String, props?: Object, children?: Array<{VNode|String|Number}>) -> VNode
 ```
 
 Create Virtual DOM.
+
+## x.jsx
+
+``` javascript
+x.jsx(name: String, props: Object?, ...children: {VNode|String|Number}) -> VNode
+```
 
 ## x.render
 
