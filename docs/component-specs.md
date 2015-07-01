@@ -2,6 +2,14 @@
 
 ## Properties
 
+### mixins
+
+``` javascript
+mixins: Array<Mixin>
+```
+
+See [Mixin](./mixin.md).
+
 ### propTypes
 
 ``` javascript
