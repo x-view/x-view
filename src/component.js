@@ -13,6 +13,11 @@ function Component() {
     this.mounted = false;
     this.root = null;
   });
+  if(this.mixins) {
+    for(var i = 0; i < this.mixins.length; i++) {
+      this.mixins[i].init(this);
+    }
+  }
   this.init();
 }
 
@@ -30,6 +35,8 @@ Component.createClass = function(proto) {
   Object.assign(componentClass.prototype, proto);
   return componentClass;
 };
+
+Component.prototype.mixins = null;
 
 Component.prototype.propTypes = {};
 
