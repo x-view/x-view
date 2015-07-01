@@ -5,6 +5,7 @@ var register = require("./src/web/register");
 var render = require("./src/render");
 var Component = require("./src/component");
 var vdom = require("./src/vdom");
+var jsx = require("./src/jsx");
 
 module.exports = {
   event: event,
@@ -14,5 +15,6 @@ module.exports = {
   render: render,
   Component: Component,
   createClass: Component.createClass,
-  createElement: vdom.createElement
+  createElement: vdom.createElement,
+  jsx: jsx
 };
