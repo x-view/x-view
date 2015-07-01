@@ -64,6 +64,11 @@ function createElement(name, props, children) {
   props = props || {};
   children = children || [];
   props = buildProps(props);
+  for(var i = 0; i < children.length; i++) {
+    if(typeof children[i] == "number") {
+      children[i] = String(children[i]);
+    }
+  }
   if(/-/.test(name)) {
     return createComponent(name, props, children);
   } else {
