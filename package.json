@@ -1,6 +1,6 @@
 {
   "name": "x-view",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A JavaScript library like React, but uses Web Components.",
   "keywords": [],
   "homepage": "https://github.com/lixiaoyan/x-view",
