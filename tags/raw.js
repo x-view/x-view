@@ -1,4 +1,4 @@
-var x = require("../index");
+var x = require("x-view");
 
 var Raw = x.createClass({
   propTypes: {

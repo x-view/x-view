@@ -8,6 +8,11 @@ var config = {
     filename: "x-view.js",
     library: "x"
   },
+  resolve: {
+    alias: {
+      "x-view$": "./index.js"
+    }
+  },
   plugins: [
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify("production")
