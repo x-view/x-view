@@ -1,0 +1,166 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 60px;
+  font-size: 16px;
+  font-family: "Source Sans Pro";
+  font-weight: 400;
+  background-color: #fafafa;
+}
+
+body:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 240px;
+  background-color: #3f51b5;
+}
+
+.page {
+  overflow: hidden;
+  max-width: 640px;
+  margin: 60px auto;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+header {
+  padding: 80px 40px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 3em;
+  font-weight: 300;
+}
+
+header p {
+  margin: 0;
+  padding-top: 20px;
+  color: #616161;
+}
+
+nav {
+  padding: 0 40px;
+  text-align: center;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  margin: 0 4px;
+}
+
+nav a {
+  display: block;
+  width: 100px;
+  padding: 10px 0;
+  color: #fff;
+  background-color: #e91e63;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  text-decoration: none;
+}
+
+.example {
+  margin-top: 80px;
+  padding: 0 40px;
+}
+
+.example .code {
+  margin: 0 -40px;
+  padding: 20px 40px;
+  font-size: 0.9em;
+  background-color: #eceff1;
+}
+
+.example .code code {
+  font-size: 0.9em;
+}
+
+.example .define {
+  margin-top: 40px;
+}
+
+.example .use {
+  position: relative;
+  display: flex;
+  margin: 0 -40px;
+  margin-top: 40px;
+}
+
+.example .use:after {
+  content: "OR";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  padding: 20px 0;
+  font-size: 0.9em;
+  line-height: 0;
+  text-align: center;
+  border-radius: 100%;
+  color: #fff;
+  background-color: #e91e63;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.example .use .code {
+  flex: 1;
+  margin: 0;
+}
+
+.example .use .code:first-child {
+  margin-right: 2px;
+}
+
+.example .use .code:last-child {
+  margin-left: 2px;
+}
+
+.getting-started {
+  margin-top: 80px;
+}
+
+.getting-started a {
+  display: block;
+  width: 200px;
+  margin: 0 auto;
+  padding: 20px 0;
+  font-size: 1.2em;
+  text-align: center;
+  color: #fff;
+  background-color: #e91e63;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  text-decoration: none;
+}
+
+footer {
+  margin-top: 60px;
+  padding: 20px 40px;
+  font-size: 0.9em;
+  text-align: center;
+  color: #757575;
+  background-color: #eceff1;
+}
+
+footer p {
+  margin: 0;
+}

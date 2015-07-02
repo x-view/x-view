@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>X-View</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <h1>X-View</h1>
+        <p>A JavaScript library like React, but uses Web Components.</p>
+      </header>
+      <nav>
+        <ul>
+          <li><a href="https://github.com/lixiaoyan/x-view">GitHub</a></li>
+          <li><a href="https://www.npmjs.com/package/x-view">NPM</a></li>
+          <li><a href="https://github.com/lixiaoyan/x-view/blob/master/docs">Docs</a></li>
+        </ul>
+      </nav>
+      <section class="example">
+        <div class="define">
+<pre class="code"><code data-language="javascript">var x = require("x-view");
+
+var Button = x.createClass({
+  render: function() {
+    return (
+      &lt;button type="button"&gt;
+        &lt;content /&gt;
+      &lt;/button&gt;
+    );
+  }
+});
+
+x.register("x-button", Button);</code></pre>
+        </div>
+        <div class="use">
+<pre class="code"><code data-language="javascript">x.render(document.body, (
+  &lt;x-button&gt;
+    &lt;span&gt;Hello!&lt;/span&gt;
+  &lt;/x-button&gt;
+));</code></pre>
+<pre class="code"><code data-language="html">&lt;body&gt;
+  &lt;x-button&gt;
+    &lt;span&gt;Hello!&lt;/span&gt;
+  &lt;/x-button&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </section>
+      <section class="getting-started">
+        <a href="https://github.com/lixiaoyan/x-view/blob/master/docs/getting-started.md">Getting Started</a>
+      </section>
+      <footer>
+        <p>Copyright &copy; 2015 IntPtr</p>
+      </footer>
+    </div>
+  </body>
+</html>
