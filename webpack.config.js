@@ -10,7 +10,7 @@ var config = {
   },
   resolve: {
     alias: {
-      "x-view$": "./index.js"
+      "x-view$": __dirname + "/index.js"
     }
   },
   plugins: [
