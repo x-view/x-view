@@ -149,6 +149,43 @@ nav a:active {
   margin-left: 2px;
 }
 
+.features {
+  position: relative;
+  display: flex;
+  margin-top: 80px;
+}
+
+.features:after {
+  content: "+";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 2em;
+  height: 2em;
+  margin: auto;
+  padding: 1em 0;
+  font-size: 3em;
+  font-weight: 300;
+  line-height: 0;
+  text-align: center;
+  color: #9e9e9e;
+}
+
+.features .item {
+  flex: 1;
+  padding: 0 40px;
+  text-align: center;
+}
+
+.features .item h3 {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: 400;
+  color: #616161;
+}
+
 .getting-started {
   margin-top: 80px;
 }
