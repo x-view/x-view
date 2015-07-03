@@ -83,6 +83,10 @@ nav a:focus {
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
+nav a:active {
+  background-color: #c2185b;
+}
+
 .example {
   margin-top: 80px;
   padding: 0 40px;
@@ -169,6 +173,10 @@ nav a:focus {
 .getting-started a:focus {
   background-color: #ec407a;
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.getting-started a:active {
+  background-color: #c2185b;
 }
 
 footer {
