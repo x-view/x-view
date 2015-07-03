@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <title>X-View</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
+    <link rel="stylesheet" href="./vender/normalize.min.css" />
+    <link rel="stylesheet" href="./vender/solarized_light.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -22,7 +24,7 @@
       </nav>
       <section class="example">
         <div class="define">
-<pre class="code"><code data-language="javascript">var x = require("x-view");
+<pre class="code"><code class="language-javascript">var x = require("x-view");
 
 var Button = x.createClass({
   render: function() {
@@ -37,12 +39,12 @@ var Button = x.createClass({
 x.register("x-button", Button);</code></pre>
         </div>
         <div class="use">
-<pre class="code"><code data-language="javascript">x.render(document.body, (
+<pre class="code"><code class="language-javascript">x.render(document.body, (
   &lt;x-button&gt;
     &lt;span&gt;Hello!&lt;/span&gt;
   &lt;/x-button&gt;
 ));</code></pre>
-<pre class="code"><code data-language="html">&lt;body&gt;
+<pre class="code"><code class="language-html">&lt;body&gt;
   &lt;x-button&gt;
     &lt;span&gt;Hello!&lt;/span&gt;
   &lt;/x-button&gt;
@@ -56,5 +58,9 @@ x.register("x-button", Button);</code></pre>
         <p>Copyright &copy; 2015 IntPtr</p>
       </footer>
     </div>
+    <script src="./vender/highlight.min.js"></script>
+    <script>
+      hljs.initHighlighting();
+    </script>
   </body>
 </html>

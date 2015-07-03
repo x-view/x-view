@@ -5,8 +5,9 @@
 body {
   margin: 0 60px;
   font-size: 16px;
-  font-family: "Source Sans Pro";
+  font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
+  line-height: 1.5;
   background-color: #fafafa;
 }
 
@@ -23,7 +24,7 @@ body:before {
 
 .page {
   overflow: hidden;
-  max-width: 640px;
+  width: 640px;
   margin: 60px auto;
   background-color: #fff;
   border-radius: 2px;
@@ -72,6 +73,14 @@ nav a {
   border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   text-decoration: none;
+  transition: background-color 200ms, box-shadow 200ms;
+}
+
+nav a:hover,
+nav a:active,
+nav a:focus {
+  background-color: #ec407a;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 .example {
@@ -82,12 +91,15 @@ nav a {
 .example .code {
   margin: 0 -40px;
   padding: 20px 40px;
-  font-size: 0.9em;
   background-color: #eceff1;
 }
 
 .example .code code {
-  font-size: 0.9em;
+  display: block;
+  padding: 0;
+  font-size: 0.75em;
+  font-family: "Source Code Pro", monospace;
+  background-color: transparent;
 }
 
 .example .define {
@@ -118,7 +130,6 @@ nav a {
   border-radius: 100%;
   color: #fff;
   background-color: #e91e63;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .example .use .code {
@@ -150,12 +161,20 @@ nav a {
   border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   text-decoration: none;
+  transition: background-color 200ms, box-shadow 200ms;
+}
+
+.getting-started a:hover,
+.getting-started a:active,
+.getting-started a:focus {
+  background-color: #ec407a;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 footer {
   margin-top: 60px;
   padding: 20px 40px;
-  font-size: 0.9em;
+  font-size: 0.8em;
   text-align: center;
   color: #757575;
   background-color: #eceff1;
