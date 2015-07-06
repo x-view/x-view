@@ -1,8 +1,8 @@
-var type = require("../type");
-var event = require("../event");
-var render = require("../render");
+var type = require("./type");
+var event = require("./event");
+var render = require("./render");
 
-require("./event");
+require("./dom-event");
 
 var store = new WeakMap();
 var cachedProps = new WeakMap();
