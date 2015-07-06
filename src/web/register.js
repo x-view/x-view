@@ -36,7 +36,12 @@ function wrapMethod(method) {
   };
 }
 
-function register(name, componentClass) {
+function register(name, options, componentClass) {
+  if(!componentClass) {
+    componentClass = options;
+    options = undefined;
+  }
+  options = options || {};
   var propTypes = componentClass.prototype.propTypes;
   var propNames = Object.keys(propTypes);
   var prototype = Object.assign(Object.create(HTMLElement.prototype), {
@@ -94,7 +99,8 @@ function register(name, componentClass) {
     }
   }
   document.registerElement(name, {
-    prototype: prototype
+    prototype: prototype,
+    extends: options.extends
   });
 }
 
