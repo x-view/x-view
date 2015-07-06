@@ -19,7 +19,8 @@
     "url": "https://github.com/lixiaoyan/x-view.git"
   },
   "scripts": {
-    "prepublish": "webpack && webpack --config ./webpack.config.min.js"
+    "build": "webpack && webpack --config ./webpack.config.min.js",
+    "prepublish": "npm run-script build"
   },
   "dependencies": {
     "virtual-dom": "^2.0.1"
