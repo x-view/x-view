@@ -1,4 +1,4 @@
-# X-View
+# [X-View](http://www.intptr.im/x-view/)
 
 [![npm](https://img.shields.io/npm/v/x-view.svg)](https://www.npmjs.com/package/x-view) [![npm](https://img.shields.io/npm/l/x-view.svg)](https://www.npmjs.com/package/x-view)
 
