@@ -3,6 +3,10 @@ var EventHook = require("./hooks/event");
 
 var store = {};
 
+function isCustomElement(name) {
+  return name && /-/.test(name);
+}
+
 function buildProps(props) {
   var attributes = {};
   var properties = {};
@@ -10,17 +14,20 @@ function buildProps(props) {
   for(var key in props) {
     if(props.hasOwnProperty(key)) {
       var value = props[key];
-      if(/^on-/.test(key) && typeof value == "function") {
-        events[key] = new EventHook(value);
+      if(value === null) {
+        value = undefined;
+      }
+      if(key == "is") {
+        continue;
       } else if(key == "style") {
         properties[key] = value;
+      } else if(/^on-/.test(key) && typeof value == "function") {
+        events[key] = new EventHook(value);
       } else {
         if(typeof value == "boolean") {
           value = value ? "" : undefined;
         } else if(typeof value == "number") {
           value = String(value);
-        } else if(value === null) {
-          value = undefined;
         }
         attributes[key] = value;
       }
@@ -31,29 +38,64 @@ function buildProps(props) {
   }, properties, events);
 }
 
-function createClass(name) {
-  var widgetClass = function(props, children) {
-    this.props = props;
-    this.vtree = vdom.h(name, props, children);
-  };
-  widgetClass.prototype.type = "Widget";
-  widgetClass.prototype.init = function() {
+var Widget = function(name, props, children) {
+  this.name = name;
+  this.props = props;
+  this.children = children;
+  this.vtree = vdom.h(this.name, this.props, this.children);
+};
+
+Widget.prototype.type = "Widget";
+
+Widget.prototype.componentName = null;
+
+Object.defineProperty(Widget.prototype, "id", {
+  configurable: true,
+  enumerable: true,
+  get: function() {
+    return this.name + "," + this.componentName;
+  }
+});
+
+Widget.prototype.init = function() {
+  if(this.name === this.componentName) {
     return vdom.create(this.vtree);
-  };
-  widgetClass.prototype.update = function(previous, dom) {
-    var patches = vdom.diff(previous.vtree, this.vtree);
+  } else {
+    var dom = document.createElement(this.name, this.componentName);
+    var base = vdom.h(this.name);
+    var patches = vdom.diff(base, this.vtree);
     var root = vdom.patch(dom, patches);
     return root;
+  }
+};
+
+Widget.prototype.update = function(previous, dom) {
+  var patches = vdom.diff(previous.vtree, this.vtree);
+  var root = vdom.patch(dom, patches);
+  return root;
+};
+
+function createClass(componentName) {
+  var widgetClass = function() {
+    Widget.apply(this, arguments);
   };
+  widgetClass.prototype = Object.create(Widget.prototype);
+  Object.defineProperty(widgetClass.prototype, "constructor", {
+    configurable: true,
+    writable: true,
+    enumerable: false,
+    value: widgetClass
+  });
+  widgetClass.prototype.componentName = componentName;
   return widgetClass;
 }
 
-function createComponent(name, props, children) {
-  var widgetClass = store[name];
+function createComponent(componentName, name, props, children) {
+  var widgetClass = store[componentName];
   if(!widgetClass) {
-    store[name] = widgetClass = createClass(name);
+    store[componentName] = widgetClass = createClass(componentName);
   }
-  return new widgetClass(props, children);
+  return new widgetClass(name, props, children);
 }
 
 function createElement(name, props, children) {
@@ -63,14 +105,17 @@ function createElement(name, props, children) {
   }
   props = props || {};
   children = children || [];
+  var is = props.is;
   props = buildProps(props);
   for(var i = 0; i < children.length; i++) {
     if(typeof children[i] == "number") {
       children[i] = String(children[i]);
     }
   }
-  if(/-/.test(name)) {
-    return createComponent(name, props, children);
+  if(isCustomElement(name)) {
+    return createComponent(name, name, props, children);
+  } else if(isCustomElement(is)) {
+    return createComponent(is, name, props, children);
   } else {
     return vdom.h(name, props, children);
   }
