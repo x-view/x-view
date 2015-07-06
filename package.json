@@ -26,6 +26,8 @@
     "virtual-dom": "^2.0.1"
   },
   "devDependencies": {
+    "core-js": "^0.9.18",
+    "webcomponents.js": "^0.7.2",
     "webpack": "^1.9.11"
   }
 }
