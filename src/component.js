@@ -38,9 +38,9 @@ Component.createClass = function(proto) {
 
 Component.prototype.mixins = null;
 
-Component.prototype.dom = {};
-
 Component.prototype.propTypes = {};
+
+Component.prototype.dom = {};
 
 Component.prototype.init = function() {};
 
