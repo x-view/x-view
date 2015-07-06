@@ -55,5 +55,5 @@ Force re-render the component even `this.needUpdate()` returns false.
 ### emit
 
 ``` javascript
-emit(type: String, detail?: Object) -> void
+emit(type: String, detail?: *) -> void
 ```

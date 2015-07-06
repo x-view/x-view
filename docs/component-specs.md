@@ -19,6 +19,14 @@ propTypes[name: String] -> x.type.*
 
 Declaring types of component's props. See [Props Type](./props-type.md).
 
+### dom
+
+``` javascript
+dom: Object
+```
+
+Extensions for element's prototype.
+
 ## Methods
 
 ### init

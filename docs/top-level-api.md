@@ -35,7 +35,9 @@ An alternative way to create a sub class of `x.Component`.
 ## x.register
 
 ``` javascript
-x.register(name:String, componentClass: class:extends(x.Component)) -> void
+x.register(name:String, options?: Object, componentClass: class:extends(x.Component)) -> void
+
+options.extends -> String
 ```
 
 Register custom element.
