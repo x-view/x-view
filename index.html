@@ -26,15 +26,15 @@
         <div class="define">
 <pre class="code"><code class="language-javascript">var x = require("x-view");
 
-var Button = x.createClass({
-  render: function() {
+class Button extends x.Component {
+  render() {
     return (
       &lt;button type="button"&gt;
         &lt;content /&gt;
       &lt;/button&gt;
     );
   }
-});
+}
 
 x.register("x-button", Button);</code></pre>
         </div>
