@@ -13,7 +13,7 @@ module.exports = {
   config: config,
   register: register,
   render: render.render,
-  unmount: render.unmount
+  unmount: render.unmount,
   Component: Component,
   createClass: Component.createClass,
   createElement: vdom.createElement,
