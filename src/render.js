@@ -26,6 +26,7 @@ function unmount(dom) {
   var state = store.get(dom);
   if(state) {
     dom.removeChild(state.root);
+    store.delete(dom);
   }
 }
 
