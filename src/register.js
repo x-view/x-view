@@ -10,7 +10,7 @@ var cachedProps = new WeakMap();
 function update(dom, component, root) {
   event.emit(component, "update");
   var vtree = component.render();
-  render(root, vtree);
+  render.render(root, vtree);
   event.emit(component, "updated");
 }
 

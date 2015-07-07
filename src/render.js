@@ -22,4 +22,14 @@ function render(dom, vtree) {
   }
 }
 
-module.exports = render;
+function unmount(dom) {
+  var state = store.get(dom);
+  if(state) {
+    dom.removeChild(state.root);
+  }
+}
+
+module.exports = {
+  render: render,
+  unmount: unmount
+};
