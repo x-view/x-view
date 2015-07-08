@@ -63,7 +63,7 @@ initialState() -> Object
 
 ## Events
 
-See also [Event API](./event-api.js).
+See also [Event API](./event-api.md).
 
 ### `"mount"`
 

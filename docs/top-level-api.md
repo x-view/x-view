@@ -12,7 +12,7 @@ See [Props Type](./props-type.md).
 
 ## x.event
 
-See [Event API](./event-api.js).
+See [Event API](./event-api.md).
 
 ## x.Component
 
