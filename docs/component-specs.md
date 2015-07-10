@@ -27,6 +27,12 @@ dom: Object
 
 Extensions for element's prototype.
 
+### defaultProps
+
+``` javascript
+defaultProps: Object
+```
+
 ## Methods
 
 ### init
@@ -47,18 +53,6 @@ render() -> VNode
 
 ``` javascript
 needUpdate(nextProps: Object, nextState: Object) -> Boolean
-```
-
-### defaultProps
-
-``` javascript
-defaultProps() -> Object
-```
-
-### initialState
-
-``` javascript
-initialState() -> Object
 ```
 
 ## Events
