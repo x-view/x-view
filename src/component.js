@@ -14,9 +14,9 @@ function Component(props) {
     this.root = null;
   });
   if(this.mixins) {
-    for(var i = 0; i < this.mixins.length; i++) {
-      this.mixins[i].init(this);
-    }
+    this.mixins.forEach(function(mixin) {
+      mixin.init(this);
+    }, this);
   }
   this.init();
 }

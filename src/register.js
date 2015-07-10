@@ -47,13 +47,12 @@ function register(name, options, componentClass) {
   var prototype = Object.assign(Object.create(HTMLElement.prototype), {
     createdCallback: function() {
       var props = {};
-      for(var i = 0; i < propNames.length; i++) {
-        var name = propNames[i];
+      propNames.forEach(function(name) {
         var value = this.getAttribute(name);
         if(name !== null) {
           props[name] = castType(value, propTypes[name]);
         }
-      }
+      }, this);
       var component = new componentClass(props);
       var root = this.createShadowRoot();
       event.on(component, "upstream:update", update.bind(null, this, component, root));

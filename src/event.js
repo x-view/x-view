@@ -45,9 +45,9 @@ function emit(obj, type) {
   if(listeners && listeners[type]) {
     var handlers = listeners[type].slice(0);
     var args = Array.prototype.slice.call(arguments, 2);
-    for(var i = 0; i < handlers.length; i++) {
-      handlers[i].apply(obj, args);
-    }
+    handlers.forEach(function(handler) {
+      handler.apply(obj, args);
+    });
   }
 }
 
