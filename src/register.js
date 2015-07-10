@@ -30,6 +30,9 @@ function castType(value, propType) {
 }
 
 function wrapMethod(method) {
+  if(!method) {
+    return null;
+  }
   return function() {
     var state = store.get(this);
     return method.apply(state.component, arguments);
@@ -89,11 +92,26 @@ function register(name, options, componentClass) {
   });
   for(var key in componentClass.prototype.dom) {
     if(componentClass.prototype.dom.hasOwnProperty(key)) {
-      var value = componentClass.prototype.dom[key];
-      if(typeof value == "function") {
-        prototype[key] = wrapMethod(value);
+      var descriptor = Object.getOwnPropertyDescriptor(componentClass.prototype.dom, key);
+      if("value" in descriptor) {
+        var value = descriptor.value;
+        if(typeof value == "function") {
+          value = wrapMethod(value);
+        }
+        Object.defineProperty(prototype, key, {
+          configurable: true,
+          enumerable: true,
+          writable: true,
+          value: value
+        });
       } else {
-        prototype[key] = value;
+        Object.defineProperty(prototype, key, {
+          configurable: true,
+          enumerable: true,
+          writable: true,
+          get: wrapMethod(descriptor.get),
+          set: wrapMethod(descriptor.set)
+        });
       }
     }
   }
