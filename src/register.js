@@ -45,7 +45,7 @@ function register(name, options, componentClass) {
     options = undefined;
   }
   options = options || {};
-  var propTypes = componentClass.prototype.propTypes;
+  var propTypes = componentClass.propTypes;
   var propNames = Object.keys(propTypes);
   var prototype = Object.assign(Object.create(HTMLElement.prototype), {
     createdCallback: function() {
@@ -90,9 +90,9 @@ function register(name, options, componentClass) {
       state.component.replaceProps(props);
     }
   });
-  for(var key in componentClass.prototype.dom) {
-    if(componentClass.prototype.dom.hasOwnProperty(key)) {
-      var descriptor = Object.getOwnPropertyDescriptor(componentClass.prototype.dom, key);
+  for(var key in componentClass.dom) {
+    if(componentClass.dom.hasOwnProperty(key)) {
+      var descriptor = Object.getOwnPropertyDescriptor(componentClass.dom, key);
       if("value" in descriptor) {
         var value = descriptor.value;
         if(typeof value == "function") {

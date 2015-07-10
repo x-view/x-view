@@ -2,7 +2,7 @@ var event = require("./event");
 
 function Component(props) {
   this.props = this._buildProps(props);
-  this.state = this.initialState();
+  this.state = {};
   this.mounted = false;
   event.on(this, "mount", function(root) {
     this.mounted = true;
@@ -36,11 +36,27 @@ Component.createClass = function(proto) {
   return componentClass;
 };
 
-Component.prototype.mixins = null;
+Component.mixins = null;
 
-Component.prototype.propTypes = {};
+Component.propTypes = {};
 
-Component.prototype.dom = {};
+Component.dom = {};
+
+Component.defaultProps = {};
+
+["mixins", "propTypes", "dom", "defaultProps"].forEach(function(name) {
+  Object.defineProperty(Component.prototype, name, {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    get: function() {
+      return this.constructor[name];
+    },
+    set: function(value) {
+      this.constructor[name] = value;
+    }
+  });
+});
 
 Component.prototype.init = function() {};
 
@@ -49,7 +65,7 @@ Component.prototype.needUpdate = function(nextProps, nextState) {
 };
 
 Component.prototype._buildProps = function(props) {
-  return Object.assign(this.defaultProps(), props);
+  return Object.assign({}, this.defaultProps, props);
 };
 
 Component.prototype._update = function(props, state) {
@@ -89,14 +105,6 @@ Component.prototype.replaceState = function(state) {
 
 Component.prototype.emit = function(type, detail) {
   event.emit(this, "upstream:emit-event", type, detail);
-};
-
-Component.prototype.defaultProps = function() {
-  return {};
-};
-
-Component.prototype.initialState = function() {
-  return {};
 };
 
 Component.prototype.render = function() {
