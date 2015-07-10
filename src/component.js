@@ -28,8 +28,8 @@ Component.createClass = function(proto) {
   componentClass.prototype = Object.create(Component.prototype);
   Object.defineProperty(componentClass.prototype, "constructor", {
     configurable: true,
-    writable: true,
     enumerable: false,
+    writable: true,
     value: componentClass
   });
   Object.assign(componentClass.prototype, proto);
@@ -48,7 +48,6 @@ Component.defaultProps = {};
   Object.defineProperty(Component.prototype, name, {
     configurable: true,
     enumerable: true,
-    writable: true,
     get: function() {
       return this.constructor[name];
     },
