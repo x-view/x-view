@@ -3,9 +3,9 @@
   "version": "0.2.1",
   "description": "A JavaScript library like React, but uses Web Components.",
   "keywords": [],
-  "homepage": "https://github.com/lixiaoyan/x-view",
+  "homepage": "https://github.com/x-view/x-view",
   "bugs": {
-    "url": "https://github.com/lixiaoyan/x-view/issues"
+    "url": "https://github.com/x-view/x-view/issues"
   },
   "license": "MIT",
   "author": {
@@ -16,7 +16,7 @@
   "main": "./index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lixiaoyan/x-view.git"
+    "url": "https://github.com/x-view/x-view.git"
   },
   "scripts": {
     "build": "webpack && webpack --config ./webpack.config.min.js",
