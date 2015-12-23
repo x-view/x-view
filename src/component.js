@@ -71,12 +71,11 @@ Component.prototype._update = function(props, state) {
   if(props !== this.props) {
     event.emit(this, "receive-props", props);
   }
-  if(this.needUpdate(props, state)) {
-    this.props = props;
-    this.state = state;
-    if(this.mounted) {
-      event.emit(this, "upstream:update");
-    }
+  var needUpdate = this.mounted && this.needUpdate(props, state);
+  this.props = props;
+  this.state = state;
+  if(needUpdate) {
+    event.emit(this, "upstream:update");
   }
 };
 
