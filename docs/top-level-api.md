@@ -65,3 +65,9 @@ x.render(dom: Element, vtree: VNode) -> void
 ```
 
 Render Virtual DOM to HTML Element.
+
+## x.unmount
+
+``` javascript
+x.unmount(dom: Element) -> void
+```
