@@ -5,7 +5,7 @@ var Raw = x.createClass({
     html: x.type.string
   },
   init: function() {
-    x.event.on(this, "update", this.updateHTML);
+    x.event.on(this, "updated", this.updateHTML);
   },
   updateHTML: function() {
     this.root.innerHTML = this.props.html;
